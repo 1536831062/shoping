@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="js/js/css/bootstrap.min.css"/>
+		<script type="application/javascript" src="js/jquery-1.11.0.js"></script>
+		<script language="javascript" src="js/js/js/bootstrap.min.js"></script>
+		<script type="application/javascript" src="js/test.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a:hover{
+				color: #D58512;
+			}
+			.div_a{
+				width: 100%;
+				height: 1000px;
+			}
+			.cartMain{
+				widows: 86%;
+				height: 1000px;
+				margin:auto;
+			}
+			.cartMain_hd{
+				width: 86%;
+				height: 40px;
+				margin:auto;
+				margin-top: 50px;
+			}
+			.cartMain_hd .order_lists{
+				width: 86%;
+				height: 50px;
+				
+			}
+			.cartMain_hd .order_lists .list_chk{
+				margin-left: 10px;
+			}
+			.cartMain_hd .order_lists{
+				width: 100%;
+				margin: auto;
+			}
+			.cartMain_hd .order_lists li{
+				float: left;
+				list-style: none;
+			}
+			.cartMain_hd .order_lists .list_con,.cartMain_hd .order_lists .list_info,.cartMain_hd .order_lists .list_price{
+				margin-left: 160px;
+			}
+			.cartMain_hd .order_lists .list_amount,.cartMain_hd .order_lists .list_sum,.cartMain_hd .order_lists .list_op{
+				margin-left: 90px;
+			}
+			.cartBox{
+				width: 86%;
+				height: 300px;
+				margin: auto;
+				
+			}
+			.cartMain .cartBox .shop_info{
+				margin-top: 10px;
+			}
+			.cartBox .shop_info{
+				width: 86%;
+				height: 30px;
+				margin-left: 10px;
+			}
+			.shop_info .all_check,.shop_info .shop_name{
+				float: left;
+			}
+			.order_content{
+				height:250px;
+				margin: auto;
+				border: 1px solid #ADADAD;
+			}
+			.order_content ul{
+				height: 120px;
+			}
+			.order_content ul li{
+				float: left;
+				list-style: none;
+			}
+			.order_content .order_lists .list_chk{
+				width: 50px;
+				height: 120px;
+				margin-left: 30px;
+				line-height: 60px;
+			}
+			.order_content .order_lists .list_con{
+				width: 300px;
+				height: 120px;
+				
+			}
+			.order_content .order_lists .list_con .list_img{
+				width: 100px;
+				height: 100px;
+				line-height: 120px;
+			}
+			.order_content .order_lists .list_con .list_text{
+				width: 200px;
+				height: 100px;
+				margin-top: 20px;
+			}
+			.order_content .order_lists .list_con .list_img,.order_content .order_lists .list_con .list_text{
+				float: left;
+			}
+			.order_content .order_lists .list_info{
+				width: 250px;
+				height: 120px;
+				margin-top: 20px;
+			}
+			.order_content .order_lists .list_info p{
+				margin-left: 50px;
+				color: #9D9D9D;
+				
+			}
+			.order_content .order_lists .list_price{
+				width: 90px;
+				height: 120px;
+				margin-top: 20px;
+				text-align: center;
+			}
+			.order_content .order_lists .list_amount{
+				width: 140px;
+				height: 120px;
+				margin-top: 20px;
+			}
+			.order_content .order_lists .list_amount .reduce,.order_content .order_lists .list_amount .plus,.order_content .order_lists .list_amount .sum{
+				float: left;
+				width: 40px;
+				text-align: center;
+				text-decoration: none;
+			}
+			.cartBox .order_content .list_sum{
+				margin-top: 20px;
+				width: 90px;
+				text-align: center;
+				margin-top: 20px;
+				text-align: center;
+			}
+
+			.order_content .order_lists .list_op{
+				width: 160px;
+				height: 120px;
+				margin-top: 20px;
+				text-align: center;
+			}
+			.bar-wrapper{
+				width: 86%;
+				height: 50px;
+				position: relative;
+				margin: 0 auto;
+			}
+			.bar-right{
+				width: 86%;
+				height: 50px;
+				position: fixed;
+				margin: 0 auto;
+				bottom: 0;
+				background-color: white;
+
+			}
+			.bar-right div{
+				float: right;
+				margin-left: 40px;
+				line-height: 50px;
+			}
+			.cartBox .list_sum{
+				color: red;
+			}
+			strong{
+				margin: 10px;
+				color: red;
+				font-size: 20px;
+			}
+			.calBtn{
+				background-color: #9D9D9D;
+				width: 120px;
+				text-align: center;
+				font-size: 21px;
+			}
+			.calBtn a{
+				color: white;
+			}
+			.cartBox a{
+				color: #000000;
+			}
+			.cartBox a:hover{
+				color: #D58512;
+			}	
+			.my_model{
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+			
+		</script>
+		<script src="js/test.js"></script>
+	</head>
+	<body>
+		<div class="div_a">
+			<section class="cartMain">
+				<div class="cartMain_hd">
+					<ul class="order_lists cartTOP">
+						<li class="list_chk">
+							<input type="checkbox" name="all" id="all" value="" class="whole_check"/>
+							<label for="all">全选</label>
+						</li>
+						<li class="list_con">商品信息</li>
+						<li class="list_info">商品参数</li>
+						<li class="list_price">单价</li>
+						<li class="list_amount">数量</li>
+						<li class="list_sum">金额</li>
+						<li class="list_op">操作</li>
+					</ul>
+				</div>
+				<div class="cartBox">
+					<div class="shop_info">
+						<div class="all_check">
+							<input type="checkbox" name="shop_a" value="" class="shopChoice"/>
+							<label  class="shop"></label>
+						</div>
+						<div class="shop_name">
+							店铺：<a href="javascript:;">艺术生活</a>
+						</div>
+					</div>
+					<div class="order_content">
+						<ul class="order_lists">
+							<li class="list_chk">
+								<input type="checkbox" name="checkbox_2"  value="" class="son_check"/>
+								<label ></label>
+							</li>
+							<li class="list_con">
+								<div class="list_img">
+									<a href="javascript:;">
+										<img src="img/taobao_cart_02.jpg"/>
+									</a>
+								</div>
+								<div class="list_text">
+									<a href="">
+										夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男
+									</a>
+								</div>
+							</li>
+							<li class="list_info">
+								<p>规格：默认</p>
+								<p>尺寸：16*16*3(cm)</p>
+							</li>
+							<li class="list_price">
+								<p class="price"><b>￥980</b></p>
+							</li>
+							<li class="list_amount">
+								<div class="amount_box">
+									<a href="" class="reduce reSty">-</a>
+									<input type="text" name="" value="1" class="sum"/>
+									<a href="" class="plus">+</a>
+								</div>
+							</li>
+							<li class="list_sum">
+								<p class="sum_price"><b>￥980</b></p>
+							</li>
+							<li class="list_op">
+								<p class="del">
+									<a href="" class="delBtn">移除商品</a>
+								</p>
+							</li>
+						</ul>
+						
+						<ul class="order_lists">
+							<li class="list_chk">
+								<input type="checkbox" name="checkbox_2"  value="" class="son_check"/>
+								<label ></label>
+							</li>
+							<li class="list_con">
+								<div class="list_img">
+									<a href="javascript:;">
+										<img src="img/taobao_cart_03.jpg"/>
+									</a>
+								</div>
+								<div class="list_text">
+									<a href="">
+										夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男
+									</a>
+								</div>
+							</li>
+							<li class="list_info">
+								<p>规格：默认</p>
+								<p>尺寸：16*16*3(cm)</p>
+							</li>
+							<li class="list_price">
+								<p class="price"><b>￥980</b></p>
+							</li>
+							<li class="list_amount">
+								<div class="amount_box">
+									<a href="" class="reduce reSty">-</a>
+									<input type="text" name=""  value="1" class="sum"/>
+									<a href="" class="plus">+</a>
+								</div>
+							</li>
+							<li class="list_sum">
+								<p class="sum_price"><b>￥980</b></p>
+							</li>
+							<li class="list_op">
+								<p class="del">
+									<a href="" class="delBtn">移除商品</a>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="cartBox">
+					<div class="shop_info">
+						<div class="all_check">
+							<input type="checkbox" name="shop_a" value="" class="shopChoice"/>
+							<label class="shop"></label>
+						</div>
+						<div class="shop_name">
+							店铺：<a href="javascript:;">卷卷旗舰店</a>
+						</div>
+					</div>
+					<div class="order_content">
+						<ul class="order_lists">
+							<li class="list_chk">
+								<input type="checkbox" name="checkbox_2"  value="" class="son_check"/>
+								<label ></label>
+							</li>
+							<li class="list_con">
+								<div class="list_img">
+									<a href="javascript:;">
+										<img src="img/fe737bea-01f2-4113-a5bf-49cd0554dd69.jpg" style="width: 80px; height: 80px;"/>
+									</a>
+								</div>
+								<div class="list_text">
+									<a href="">
+										夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男
+									</a>
+								</div>
+							</li>
+							<li class="list_info">
+								<p>规格：默认</p>
+								<p>尺寸：16*16*3(cm)</p>
+							</li>
+							<li class="list_price">
+								<p class="price"><b>￥980</b></p>
+							</li>
+							<li class="list_amount">
+								<div class="amount_box">
+									<a href="" class="reduce reSty">-</a>
+									<input type="number" name="" value="1" class="sum"/>
+									<a class="plus">+</a>
+								</div>
+							</li>
+							<li class="list_sum">
+								<p class="sum_price"><b>￥980</b></p>
+							</li>
+							<li class="list_op">
+								<p class="del">
+									<a href="" class="delBtn">移除商品</a>
+								</p>
+							</li>
+						</ul>
+						
+						<ul class="order_lists">
+							<li class="list_chk">
+								<input type="checkbox" name="checkbox_2" value="" class="son_check"/>
+								<label></label>
+							</li>
+							<li class="list_con">
+								<div class="list_img">
+									<a href="javascript:;">
+										<img src="img/ivc2u76c75_800_800.jpg" style="width: 80px; height: 80px;"/>
+									</a>
+								</div>
+								<div class="list_text">
+									<a href="">
+										夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男
+									</a>
+								</div>
+							</li>
+							<li class="list_info">
+								<p>规格：默认</p>
+								<p>尺寸：16*16*3(cm)</p>
+							</li>
+							<li class="list_price">
+								<p class="price"><b>￥980</b></p>
+							</li>
+							<li class="list_amount">
+								<div class="amount_box">
+									<a href="" class="reduce reSty">-</a>
+									<input type="text" name=""  value="1" class="sum"/>
+									<a href="" class="plus">+</a>
+								</div>
+							</li>
+							<li class="list_sum">
+								<p class="sum_price"><b>￥980</b></p>
+							</li>
+							<li class="list_op">
+								<p class="del">
+									<a href="" class="delBtn">移除商品</a>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="cartBox">
+					<div class="shop_info">
+						<div class="all_check">
+							<input type="checkbox" name="shop_a"  value="" class="shopChoice"/>
+							<label  class="shop"></label>
+						</div>
+						<div class="shop_name">
+							店铺：<a href="javascript:;">艺术生活</a>
+						</div>
+					</div>
+					<div class="order_content">
+						<ul class="order_lists">
+							<li class="list_chk">
+								<input type="checkbox" name="checkbox_2"  value="" class="son_check"/>
+								<label ></label>
+							</li>
+							<li class="list_con">
+								<div class="list_img">
+									<a href="javascript:;">
+										<img src="img/izz7gd4394_800_800.jpg" style="width: 80px; height: 80px;"/>
+									</a>
+								</div>
+								<div class="list_text">
+									<a href="">
+										夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男
+									</a>
+								</div>
+							</li>
+							<li class="list_info">
+								<p>规格：默认</p>
+								<p>尺寸：16*16*3(cm)</p>
+							</li>
+							<li class="list_price">
+								<p class="price"><b>￥980</b></p>
+							</li>
+							<li class="list_amount">
+								<div class="amount_box">
+									<a href="" class="reduce reSty">-</a>
+									<input type="text" name=""  value="1" class="sum"/>
+									<a href="" class="plus">+</a>
+								</div>
+							</li>
+							<li class="list_sum">
+								<p class="sum_price"><b>￥980</b></p>
+							</li>
+							<li class="list_op">
+								<p class="del">
+									<a href="" class="delBtn">移除商品</a>
+								</p>
+							</li>
+						</ul>
+						
+						<ul class="order_lists">
+							<li class="list_chk">
+								<input type="checkbox" name="checkbox_2"  value="" class="son_check"/>
+								<label ></label>
+							</li>
+							<li class="list_con">
+								<div class="list_img">
+									<a href="javascript:;">
+										<img src="img/9dca0e7c-c61f-4127-812e-957d0d27afd0.jpg" style="width: 80px; height: 80px;"/>
+									</a>
+								</div>
+								<div class="list_text">
+									<a href="">
+										夏季男士迷彩无袖T恤圆领潮流韩版修身男装背心青年时尚打底衫男
+									</a>
+								</div>
+							</li>
+							<li class="list_info">
+								<p>规格：默认</p>
+								<p>尺寸：16*16*3(cm)</p>
+							</li>
+							<li class="list_price">
+								<p class="price"><b>￥980</b></p>
+							</li>
+							<li class="list_amount">
+								<div class="amount_box">
+									<a href="" class="reduce reSty">-</a>
+									<input type="text" name="" value="1" class="sum"/>
+									<a href="" class="plus">+</a>
+								</div>
+							</li>
+							<li class="list_sum">
+								<p class="sum_price"><b>￥980</b></p>
+							</li>
+							<li class="list_op">
+								<p class="del">
+									<a href="" class="delBtn">移除商品</a>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="bar-wrapper">
+					<div class="bar-right">
+						<div class="calBtn">
+							<a href="">结算</a>
+						</div>
+						<div class="totalMoney">
+							共计 <strong class="total_text">0.00</strong>
+						</div>
+						<div class="piece">
+							已选商品 <strong class="piece_num">0</strong>件
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="my_model">
+				<p class="title">删除宝贝<span class="closeModel">X</span></p>
+				<p>您确定要删除该宝贝吗？</p>
+				<div class="opBtn">
+					<a href="" class="">确定</a>
+					<a href="" class="">关闭</a>
+				</div>
+			</section>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+	</body>
+</html>
